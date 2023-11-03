@@ -1,0 +1,359 @@
+Day 1
+1. Create a new workspace for core Java
+2. import day1.1 in your new workspace
+Refer to readmes n diagrams , from today's help
+3. Revise
+flow, keywords n custom exceptions
+
+4. Complete your pending work
+
+
+Day 2
+In the individual labs :
+import day2.1 n revise
+1. date_handling (Date class , SimpleDateFormat , parse n format methods)
+2. string_handling (String n StringBuilder classes)
+3. Revise wrapper classes
+Solve : "day2_data\day2_help\wrappers code\Test.java"
+
+4. Revise  inheritance in i/fs 
+
+5. Reading n solving H.W
+Important methods of the String class
+concat,charAt,indexOf,lastIndexOf,toUpperCase,toLowerCase,format,split,matches,substring,startsWith,endsWith,trim
+
+6. 
+Objective : Showroom Management system , which will keep track of vehicles added in the showroom.
+
+Objective : Accept vehicle details : chasisNo(string) : Unique ID, color(enum) , basePrice(double) , manufactureDate(Date),company,isAvailable
+
+Note : vehicle's base price will increase as per the chosen color
+
+Add  validation rules
+
+6.1 manufactureDate : must be in after 1st Jan 2021
+6.2 Vehicle color must be valid
+
+Create a Tester class
+Accept vehicle details. 
+Invoke validation rules.
+If n only if all validations succeed , then create Vehicle object.
+Use toString to display it's details.
+
+
+Day 3
+In the individual labs , revise completely'
+1.import day3.1 , to revise overriding of equal , using simple PK
+2.import day3.2 , to revise overriding of equal , using compound PK
+3. import day3.3 , to revise
+validation rules
+LocalDate API
+custom exception 
+
+
+4. Hands on (Complete as much as possible!)
+
+We are going to build Customer management system, over next few days.
+
+Typical  Options
+1. Sign up (customer registration)
+2. Sign in (login)
+i/p : email n password
+3. Change password
+i/p : email n old password n new password
+4. Un subscribe customer
+i/p : customer email
+5. Display all customers.
+and many more.....
+0. Exit 
+
+Design 
+Identify the core classes/enums involved
+1. Customer class (core class)
+state  : customer id(int) ,first name, last name (string),email(string),password(string),registrationAmount(double),dob(LocalDate),plan(ServicePlan : enum)
+Must generate customer ids automatically : auto increment)
+PK(UID) : email
+
+Add suitable constructors.
+
+Will you need to override toString n equals ?
+
+
+2. ServicePlan : enum
+ServicePlan charges : 
+SILVER : 1000 
+GOLD : 2000
+DIAMOND : 5000
+PLATINUM : 10000
+
+
+3. custom exception class
+
+4. validation rules
+4.1 no dup customers 
+(i.e if the customer tries to register using existing email , throw exception)
+
+4.2 Validate plan
+plan must be of supported types
+
+4.3 reg amount must match with the plan
+
+
+5. Tester, with UI , use scanner
+Accept customer details
+Validate i/ps (single method)
+In case of successful validations , display customer details via toString or displat error mesg via custom exception.
+
+
+
+Day 4
+In the combined lab , revise : 
+1. import day4.2 in your workspace
+(File --import --General --Existing projects in workspace --Browse n choose project folder 
+check copy check box , to copy it in your workspace.)
+1.1 Refer to sample data , from today's sequence.
+1.2 Add a method in ShowroomUtils to return populated showroom.
+1.3. Revise all options
+
+2. Hands on (complete as much as possible)
+Continue with day3 customer assignment
+If you have completed it , continue with your project or import "day3_lab_practice" in your workspace.
+Solve these options
+
+1. Sign up (customer registration)
+
+2. Sign in (login)
+i/p : email n password
+
+3. Change password
+i/p : email n old password n new password
+
+4. Un subscribe customer
+i/p : customer email
+
+5. Display all customers.
+
+0. Exit 
+
+
+
+Day 5
+1. import day5.1 , to revise
+1.1 Custom ordering (based upon Comparator)
+1.2 Iterators n ListIterator n exceptions involved
+1.3 ArrayList vs LinkedList
+(solve : day5.1\src\linked_lists\TestLinkedList.java)
+
+2. import day5.2 , to revise Set functionality n it's implementation classes.
+
+
+2. Complete pending work (customer management system)
+Continue 
+2.1 Solve : 
+Sort customer details as per email , using Natural Ordering
+2.2 Sort customer details as per date of birth , using custom ordering
+2.3 Sort customer details as per date of birth n last name , using custom ordering n anonymous inner class
+
+2.4 
+1. As an admin , how will you find out the complete names of the customers , who have not paid the subscription (reg amount) , for last 3 months ?
+Hint : 
+Add instance field in Customer : lastSubscriptionPaidDate : LocalDate
+initialize in the ctor  : to reg date (LocalDate.now())
+Add option in tester(under customer role) : to pay reg / subscription amount
+(Currently there are no roles , will be added later !)
+eg : for (Customer c: customerList)
+       {
+          long months=Period.between(c.getLastSubscriptionPaidDate(), LocalDate.now()).toTotalMonths();
+          if(months > 3)
+           sop(c.getFirstName()+" "+c.getLastName());
+       }
+
+2. Add another option (admin) : display complete names of the customers , who have not paid the subscription (reg amount) , for last 3 months ?
+Hint : 
+for-each : 
+API hint : java.time.Period , between(...) , toTotalMonths()
+
+
+3. How will you remove all those customer details whose subscription is pending for last 6 months?
+Iterator : remove 
+API hint : java.time.Period , between(...) , toTotalMonths()
+(as discussed earlier)
+eg : Iterator<Customer> itr=custList.iterator();
+while(itr.hasNext())
+{
+   Customer c=itr.next();
+   long months=Period.between(c.getLastSubscriptionPaidDate(),        	LocalDate.now()).toTotalMonths();
+ if(months > 6)
+  itr.remove();
+}
+
+Add a new option , for the customer to pay the subscription
+i/p : email,password ,plan, subscription
+simply set getLastSubscriptionPaidDate to LocalDate.now();
+
+
+
+1. Mandatory reading exercise
+1.1 Open ArrayList from java docs.
+Refer to "fail-fast" behavior of the iterators
+1.2 ArrayList vs LinkedList
+(from readme)
+1.3 LinkedList additional API (from summary table of  javadocs of : Dequeue i/f)
+eg : addFirst, addLast,removeFirst,removeLast ....
+
+
+Day 6
+
+In the combined lab
+We will try to complete customer assignment as much as possible ,  using List.
+
+
+In the individual labs , 
+1. import day6.1 , to revise hashing algorithm n hashtable data structure in java
+refer :readmes n diagrams
+
+2. import day6.2 , to revise Map API 
+refer : readme
+
+
+Day 7
+1. import day7.1 , to revise Map API
+2. import day7.2 , to revise generic syntax n example of higher order function : forEach
+
+3. Solve pending objectives from CMS
+sorting n removal
+
+4. Extra practice of generics
+0. solve : "day7-data\generic-questions.txt"
+
+
+
+Day 8
+
+1. import day8.1 to revise
+1.1 Lambda expressions
+1.2 Functional streams
+
+Solve for more practice : 
+
+1.  Display all product names of a particular category , exceeding specific price. (from product list)
+I/P category name & price.
+Hint : stream , filters , map , forEach
+
+2  Prompt user for category n discount. (from product map)
+Apply that discount on all products of specified category n print those product details after applying the discount
+i/p : category n discount
+
+2.5 Print avg of squares of all nos > 50 from this data source
+{10,20,23,56,1,456,70,78,90}
+Hint : of , filter , map , reduce (average) , orElseThrow
+
+3. Use  student based scenario.(use ready code)
+ Display all student details from a student list
+
+4. Display all student details(list) sorted as per GPA (from product map)
+Use custom ordering
+eg : Comparator<Student> comp=(s1,s2) -> ((Double)s1.getGPA()).compareTo(s2.getGPA());
+map.values().stream().sorted(comp).forEach(s -> sop(s));//System.out::println
+
+5. Write a tester to print average of  gpa of students for the specified course/subject
+eg : i/p : course
+o/p : average GPA
+eg : double avgGPA=list.stream().filter(s -> s.getSubject()==subject).mapToDouble(s -> s.getGPA()).average().orElseThrow();
+
+6 Print name of specified subject  topper
+eg : String topperName=map.values().stream().filter(s -> s.getSubject()==subject).max(comp).orElseThrow().getName();
+
+7. Print no of  failures for the specified subject from the specified city ,chosen  from user.
+(gpa < 5 : failed case)
+eg : map.values().stream().filter(s -> s.getSubject()==subject)
+.filter(s -> s.getAddress().getCity().equals(chosenCity))
+.filter(s -> s.getGPA()<5)
+.count()
+
+
+8. Given a List of strings, write a program to count the number of strings that start with a specific character using streams.
+eg : list.stream().filter(s -> s.startsWith("a")).count();
+
+
+Day 9
+
+1. import day9.1 to revise Java 8 Functional streams
+
+2. import day9.2 to revise text file handling
+
+3. Complete Day 8 pending work
+
+4. Solve 
+(Integration of Collections n I/O)
+Refer to student scenario (accept student details from a Map)
+Start the app with populated Map of students
+(Can you modify populateMap further , for better FP style ?)
+Hint :collect(Collectors.toMap(keyMapper,valueMapper));
+
+Options
+1. Display all student details
+2. Cancel Admission
+i/p : rollNo
+2.5 Cancel Course/Subject
+i/p : subject name
+o/p : remove details of all students , enrolled in that course
+
+3. Store student details
+i/p : subject n city
+Store passed student details(GPA > 6)  as per the specified subject n city , sorted as per DoB , in a text file using buffer.
+0. Exit
+
+
+
+5. Optional work (Interesting !)
+Suppose you have this text file : emps.data
+Emp ID Name DeptName Salary Dob Permanent
+10,Rama,RnD,10000,1990-01-01,true
+1,Shekhar,Finance,12000,1990-01-01,false
+20,Mihir,RnD,11000,1989-05-01,false
+15,Madhavi,HR,15000,1992-02-11,true
+..........
+Print the name of the emp from specified department , earning least salary
+Print average salary for the emps from specifid dept
+Sort the emps as per Dob n display the same
+Collect all of the permanent emps in a list n display the same
+
+
+
+Day 10
+
+1. import day10.1 n day10.2 , in your workspace , to revise 
+serialization n de-serialization
+(You will see errs in day10.2 , since you won't have product_dep.jar)
+So create it n then add it in build path(i.e run time classpath)
+
+
+2. Mandatory assignment (try to at least start with it today!)
+(Integration of Collections n I/O)
+Refer to student scenario (copy core classes , custom exc . No need of ShopUtils)
+Add IOUtils  i/f : with 2 methods
+for storing n re storing student details
+(ser n de ser)
+
+In the Tester Application
+1.  Restore the Map from bin file (in case of no file or any errs , you should start with the EMPTY Map)
+
+Options
+1. Student Admission
+2. Display all student details
+3. Cancel Admission
+i/p : rollNo
+4. Find out specific student's details
+i/p : rollNo
+0. Exit
+
+Before terminating from the app, in Exit option, store student details using ser.
+
+
+
+Reading H.W
+ObjectOutputStream : writeObject
+ObjectInputStream : readObject
+
+
