@@ -1,0 +1,45 @@
+Revise Multi threading basics
+Synchronization
+Thread un safe collections
+Inter Thread communication
+
+
+1. What will happen if you don't implement run() method in implements scenario
+javac error!
+
+2. What will happen if you don't override run() method in extends scenario
+no error ! , in effective thread(do nothing thread , since inherits blank run() from Thread class
+3. What will happen if you invoke run() method instead of start ?
+no error ,BUT fatal error => no multi threading , i.e all the tasks will be executed by the main thread!
+
+4. What will happen if you call start() on a runnable thread?
+Invoker thrd gets IllegalThreadStateExc
+
+5. What will happen if you call start() on a dead thread?
+Invoker thrd gets IllegalThreadStateExc
+6. Name the un blocking triggers for a thread blocked on sleep?
+sleep over | interrupt
+7. Name the un blocking triggers for a thread blocked on read?
+data available! (while using java.io)
+
+6. Name the un blocking triggers for a thread blocked on join?
+specified thread over | interrupt | time out
+
+Refer to join account scenario , complete it n test !
+
+Refer to synchronization
+
+
+eg code for getting random no
+Random r1=new Random();
+int nextRandomInt=r1.nextInt();
+
+
+
+More examples(practice2 code)
+
+
+Producer Consumer scenario
+
+
+

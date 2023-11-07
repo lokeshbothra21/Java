@@ -1,0 +1,15 @@
+Any questions / doubts in any of earlier topics , including threads?
+User Threads vs Daemon Threads
+Java Reflection
+Cloning
+JDBC Introduction
+
+JDBC Objectives 
+1. Establish DB connection
+2. Get all user details (select query) using JDBC API
+3. If time permits ,
+Get all user details (select query) for those born between some begin date n end date , using JDBC API
+
+Reading H.W
+NIO overview
+JVM Architecture

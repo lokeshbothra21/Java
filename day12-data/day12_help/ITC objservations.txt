@@ -1,0 +1,104 @@
+started thrd  -- Producer
+w entered --- Producer
+Write Data Emp [id=1, sal=100.0]
+w exited --- Producer
+Press enter to exit
+started thrd  -- Consumer
+r entered --- Consumer
+Read  Data Emp [id=1, sal=100.0]
+r exited --- Consumer
+w entered --- Producer
+Write Data Emp [id=2, sal=200.0] 
+w exited --- Producer : dataReady=true
+w entered --- Producer : Blocked on sleep : inside
+
+Consumer : Blocked on monitor : outside
+Due to circular dependency : deadlock !
+
+After pressing enter : main : un blocks from read n then blocked on join
+--------------------------
+ITC with wait
+started thrd  -- Producer
+w entered --- Producer
+Write Data Emp [id=1, sal=100.0]
+w exited --- Producer
+Press enter to exit
+started thrd  -- Consumer
+r entered --- Consumer
+Read  Data Emp [id=1, sal=100.0]
+r exited --- Consumer
+w entered --- Producer
+Write Data Emp [id=2, sal=200.0]
+w exited --- Producer : dataRdy=t
+w entered --- Producer : Blocked on wait : outside 
+r entered --- Consumer
+Read  Data Emp [id=2, sal=200.0]
+r exited --- Consumer : dataRdy : f
+r entered --- Consumer
+
+Producer : Blocked on wait : outside (waiting for a wake up call)
+Consumer : Blocked on wait : outside (waiting for producer to produce data)
+main after pressing enter :  blocked on join 
+obs : deadlock
+reason : Thread blocked on wait needs EXPLICIT notification(wake up signal)
+------------------------------------
+ITC with wait n notify
+
+started thrd  -- Producer
+w entered --- Producer
+Write Data Emp [id=1, sal=100.0]
+w exited --- Producer , dataRdy=t
+w entered --- Producer : Blocked on wait , outside
+Press enter to exit
+started thrd  -- Consumer
+r entered --- Consumer
+Read  Data Emp [id=1, sal=100.0]
+r exited --- Consumer , dataRdy : false, sent notification -> producer  : RUNNABLE , consumer RUNNABLE
+Write Data Emp [id=2, sal=200.0]
+w exited --- Producer
+w entered --- Producer
+r entered --- Consumer
+Read  Data Emp [id=2, sal=200.0]
+r exited --- Consumer
+Write Data Emp [id=3, sal=300.0]
+w exited --- Producer
+w entered --- Producer
+r entered --- Consumer
+Read  Data Emp [id=3, sal=300.0]
+r exited --- Consumer
+--------------------
+ITC with wait , notify n using interrupt at the end , to terminate the JVM
+started thrd  -- Producer
+w entered --- Producer
+Write Data Emp [id=1, sal=100.0]
+w exited --- Producer
+Press enter to exit
+started thrd  -- Consumer
+r entered --- Consumer
+Read  Data Emp [id=1, sal=100.0]
+r exited --- Consumer
+w entered --- Producer
+Write Data Emp [id=2, sal=200.0]
+w exited --- Producer
+w entered --- Producer
+r entered --- Consumer
+Read  Data Emp [id=2, sal=200.0]
+r exited --- Consumer
+Write Data Emp [id=3, sal=300.0]
+w exited --- Producer
+w entered --- Producer
+r entered --- Consumer
+Read  Data Emp [id=3, sal=300.0]
+r exited --- Consumer
+waiting for child thrds to complete exec
+thrd over -- Consumer
+err in Producer  java.lang.InterruptedException
+thrd over -- Producer
+main over...
+
+
+
+
+
+
+

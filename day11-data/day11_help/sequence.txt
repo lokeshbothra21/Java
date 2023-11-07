@@ -1,0 +1,37 @@
+Why multi tasking ?
+Process based vs Thread based 
+What is a Thread ?
+Thread state Transitions
+Thread API
+Creating a thread using lambda expression
+Thread t1=new Thread(() -> sop(Thread.currentThread().getName()),"my_thrd");
+
+Testing concurrency n applying threads
+Objectives
+1. Testing async behavior(concurrency) using extends Thread
+eg : public class MyThread extends Thread
+{
+   //add a parameterized ctor : to supply name of the thrd
+//override : run --- for loop (sleep)--delay loop
+}
+
+Tester : main : main thread
+create multiple threads n start them
+
+Regarding method overriding n exception handling
+Overriding or implementing form of the method 
+CAN NOT throw any NEW OR BROADER CHECKED excs.
+ 
+
+2nd Objective : Refer to whiteboard(even printer ,odd printer ...)
+
+
+3rd objective : sorting of the maps(refer to whiteboard)
+
+Go through joint account scenario, from the whiteboard .
+
+
+
+
+
+Enter synchronization (=applying thread safety)
